@@ -17,8 +17,8 @@ public class BoardServiceImpl implements BoardService{
 	
 	public List selectAll() {
 		System.out.println("서비스의 selectAll 호출");
-		boardDAO.selectAll();
-		return null;
+		List list=boardDAO.selectAll();
+		return list;
 	}
 
 	@Override

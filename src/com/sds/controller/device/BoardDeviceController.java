@@ -25,9 +25,7 @@ public class BoardDeviceController {
 	@ResponseBody
 	public List selectAll(){
 		System.out.println("디바이스의 selectAll 호출");
-		boardService.selectAll();
-		List list = new ArrayList<Board>();
-		
+		List list =boardService.selectAll(); 
 		return list;
 	}
 	
