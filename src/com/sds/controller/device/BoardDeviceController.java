@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,6 +34,32 @@ public class BoardDeviceController {
 		
 		return list;
 	}
+	
+	//글 한건 등록 요청 
+	@RequestMapping(value="/board" , method=RequestMethod.POST)
+	@ResponseBody
+	public String regist(@RequestBody Board board){
+		System.out.println("작성자는 "+board.getWriter());
+		return "1";
+	} 
+	
+	/*수정요청 : PUT
+	 * POST, GET 이외의 HTTP 전송 메서드는 HTML5에서부터만 지원한다.. 
+	 * */
+	@RequestMapping(value="/board", method=RequestMethod.PUT)
+	@ResponseBody
+	public String update(Board board){
+		System.out.println("수정할 작성자는 "+board.getWriter());
+		return "1";
+	}
+	
+	@RequestMapping(value="/board/{board_id}", method=RequestMethod.DELETE)
+	@ResponseBody
+	public String update(@PathVariable int board_id){
+		System.out.println("삭제할 board_id "+board_id);
+		return "1";
+	}
+	
 	
 }
 

@@ -31,16 +31,44 @@ border:#C3C3C3 1px solid
 a{text-decoration:none}
 img{border:0px}
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 function edit(){
-	form1._method.value="PUT";
-	form1.action="/device/board";
-	form1.submit();
+	var sendData={
+		_method:"PUT",	
+		writer:form1.writer.value,
+		title:form1.title.value,
+		content:form1.content.value
+	}	
+
+	$.ajax({
+		url:"/device/board",
+		type:"POST",
+		contentType:"application/x-www-form-urlencoded",
+		data:JSON.stringify(sendData),
+		success:function(result){
+			alert(result);
+		}
+	});
 }
+
+
 function del(){
-	form1._method.value="DELETE";
-	form1.action="/device/board/23";
-	form1.submit();
+	var sendData={
+		/* _method:"DELETE", */			
+		writer:form1.writer.value,
+		title:form1.title.value,
+		content:form1.content.value
+	}	
+
+	$.ajax({
+		url:"/device/board/77",
+		type:"DELETE",
+		data:JSON.stringify(sendData),
+		success:function(result){
+			alert(result);
+		}
+	});
 }
 </script>
 </head>

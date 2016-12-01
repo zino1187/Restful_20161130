@@ -34,14 +34,22 @@ img{border:0px}
    의 요청 처리 모습이다...
  */
 function regist(){
+	var sendData={
+		writer:form1.writer.value,
+		title:form1.title.value,
+		content:form1.content.value
+	}
+	
 	$.ajax({
 		url:"http://localhost:9090/device/board",
-		type:"GET",
+		type:"POST",
 		contentType:"application/json",
+		data:JSON.stringify(sendData),				
 		success:function(result){
 			alert(result);	
 		}
 	});	
+	
 }
 </script>
 </head>
